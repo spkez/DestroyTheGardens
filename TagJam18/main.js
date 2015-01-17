@@ -7,7 +7,7 @@ const GAMEHEIGHT  = 480
 const ORIGIN = 0
 
 //  Store the DOM element you would like to append to.
-const DOM = ''
+const DOM = 'the-canvas'
 
 // Do the phaser stuff.
 var game = new Phaser.Game(
