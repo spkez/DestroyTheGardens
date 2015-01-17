@@ -23,9 +23,9 @@ var game = new Phaser.Game(
 
 // Load the images
 function preload(){
-  game.load.image('background', 'images/Background.png')
-  game.load.image('platform',   'images/Platform.png')
-  game.load.image('Wall',       'images/Wall.png')
+  game.load.image('background', 'TagJam18/images/Background.png')
+  game.load.image('platform',   'TagJam18/images/Platform.png')
+  game.load.image('Wall',       'TagJam18/images/Wall.png')
 
   // Sprite sizes are inconsistent so there is no way to do these with constants
   // The only real way is to resize the window sprite.
