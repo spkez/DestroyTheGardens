@@ -78,7 +78,10 @@ function create(){
 
   // Screw it. Let's program some procedural platforms.
   // To do this we're going to need a window group.
-
+  // Windows are where gardens are. So gardens are active windows.
+  windows = game.add.group();
+  windows.enableBody = true;
+  var garden;
 
   // Start by going line by line.
   // Start one row low because the ceiling already occupies the top row.
@@ -108,6 +111,19 @@ function create(){
         prob = game.rnd.frac();
         if (prob > 0.5){
           // place a window.
+          // The anchor point for a window will be 15 pixels offset.
+          // This will only be in he Y direction.
+          garden = windows.create(
+              TILESIZE * columns,
+              (TILESIZE * rows) - 15,
+              'window'
+            );
+          garden.body.imovable = true;
+
+          // Don't worry about the destroyed pic.
+          // You can set that when the player enters a garden.
+          // Instead just load the animation.
+          garden.animations.add('grow', [1, 2, 3, 4, 6, 7], 10, false);
         }
       }
     }
@@ -129,6 +145,22 @@ function create(){
     wall = walls.create(TILESIZE * 39, TILESIZE * index, 'wall');
     wall.body.imovable = true;
   }
+
+  // Load in the King Charles Spaniel
+  // Put him in the center of the game.
+  lemmy = game.add.sprite(game.world.width / 2, game.world.height / 2, 'dog');
+
+  // Enable physics.
+  game.physics.arcade.enable(lemmy);
+
+  // Set up the physics properties.
+  player.body.bounce.y = 0.1;
+  player.body.gravity.y = 200;
+  player.body.colldeWorldBounds = true;
+
+  // There are two animations. Right and left run.
+  player.animations.add('left',   [1, 2, 3], 10, true);
+  player.animations.add('right',  [4, 5, 6], 10, true);
 };
 
 // Ruin Gardens
