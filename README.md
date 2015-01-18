@@ -1,6 +1,8 @@
 # DestroyTheGardens
 Destroy the Gardens is an arcade game in which the player is a dog that destroys gardens.
 
+With special thanks to Madmarcel!
+
 The MIT License (MIT)
 
 Copyright (c) 2015 SPKEZ

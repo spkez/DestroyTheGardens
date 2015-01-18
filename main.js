@@ -77,6 +77,9 @@ function create(){
   }
 
   // Screw it. Let's program some procedural platforms.
+  // To do this we're going to need a window group.
+
+
   // Start by going line by line.
   // Start one row low because the ceiling already occupies the top row.
   for(var rows = 2; rows < 29; rows++){
@@ -98,6 +101,14 @@ function create(){
             'platform'
           );
         platform.body.imovable = true;
+
+        // Check to create a window garden.
+        // Generate a random number.
+        // This should also be a fraction.
+        prob = game.rnd.frac();
+        if (prob > 0.5){
+          // place a window.
+        }
       }
     }
   }
