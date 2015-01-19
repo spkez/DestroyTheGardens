@@ -67,7 +67,6 @@ function create() {
     // Let's just put in the keys first.
     // We need to be able to control the player.
     // This seems to not be working.
-    alert("About to put something into Cursors");
     cursors = game.input.keyboard.createCursorKeys();
 
     // watch for typos :)
@@ -203,8 +202,10 @@ function create() {
 
     // Set up the physics properties.
     lemmy.body.bounce.y = 0.1;
-    lemmy.body.gravity.y = 200;
-    lemmy.body.colldeWorldBounds = true;
+    lemmy.body.gravity.y = 800;
+    lemmy.body.collideWorldBounds = true;
+    lemmy.anchor.setTo(0.5, 0.5);
+    lemmy.body.setSize(8, 8);
 
     // There are two animations. Right and left run.
     lemmy.animations.add('left',   [1, 2, 3], 10, true);
@@ -222,7 +223,11 @@ function update() {
 
     // Handle Keyboard inputs.
     // Left
-    // There is an error some where in this code block that is causing the program to crash
+    // There is an error some where in this code block
+    // It was causeing the program to crash
+    // The actual error was that there was a typo in the create function
+    // It was before the animations were loaded.
+    // This meant that when lemmy.animations.play() was called, it crashed.
     if (cursors.left.isDown) {
         lemmy.body.velocity.x = -200;
         lemmy.animations.play('left');
@@ -234,5 +239,10 @@ function update() {
         // Default
         lemmy.animations.stop();
         lemmy.frame = 0;
+    }
+
+    // This is a platformer. There needs to be jumping.
+    if (cursors.up.isDown && lemmy.body.touching.down) {
+        lemmy.body.velocity.y = -200;
     }
 }
