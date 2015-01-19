@@ -64,6 +64,12 @@ function create() {
     // Physics is a perfectly fine way to do things for this.
     // The ARCADE engine has all the physics we need for a simple platformer
 
+    // Let's just put in the keys first.
+    // We need to be able to control the player.
+    // This seems to not be working.
+    alert("About to put something into Cursors");
+    cursors = game.input.keyboard.createCursorKeys();
+
     // watch for typos :)
     // Oh geez, thanks Madmarcel!
     game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -203,9 +209,6 @@ function create() {
     // There are two animations. Right and left run.
     lemmy.animations.add('left',   [1, 2, 3], 10, true);
     lemmy.animations.add('right',  [4, 5, 6], 10, true);
-
-    // We need to be able to control the player.
-    cursors = game.input.keyboard.createCursorKeys();
 }
 
 // Ruin Gardens
@@ -219,6 +222,7 @@ function update() {
 
     // Handle Keyboard inputs.
     // Left
+    // There is an error some where in this code block that is causing the program to crash
     if (cursors.left.isDown) {
         lemmy.body.velocity.x = -200;
         lemmy.animations.play('left');
